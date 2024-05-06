@@ -11,7 +11,7 @@
    ```yaml
    dependencies:
      minimp3:
-       github: your-github-user/minimp3
+       github: lost22git/minimp3
    ```
 
 2. Run `shards install`
