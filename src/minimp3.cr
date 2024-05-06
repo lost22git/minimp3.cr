@@ -297,9 +297,33 @@ record Minimp3::Frame,
   def exact_samples_bytes : UInt32
     exact_samples * ONE_SAMPLE_BYTES
   end
+
+  @[AlwaysInline]
+  def self.from_decode_result(pcm_buf, frame_info, samples)
+    exact_samples_bytes = frame_info.channels * samples * ONE_SAMPLE_BYTES
+    Frame.new(
+      data_buf: Bytes.new(pcm_buf.to_unsafe.as(UInt8*), exact_samples_bytes),
+      frame_offset: frame_info.frame_offset.to_u32,
+      frame_bytes: frame_info.frame_bytes.to_u32,
+      layer: frame_info.layer.to_u32,
+      channels: frame_info.channels.to_u32,
+      samples: samples.to_u32,
+      sample_rate: frame_info.hz.to_u32,
+      bit_rate: frame_info.bitrate_kbps.to_u32 * 1000
+    )
+  end
 end
 
 class Minimp3::Decoder
+  include Iterable(Frame)
+
+  def initialize(@reader : IO)
+  end
+
+  def each
+    FrameIterator.new(@reader)
+  end
+
   # detect file if can decode
   #
   def self.can_decode?(file : String) : Bool
@@ -320,7 +344,7 @@ class Minimp3::Decoder
   #
   def self.decode(io : IO, callback : Frame ->)
     dec = Pointer(LibMinimp3::Mp3decT).malloc(1)
-    Minimp3::LibMinimp3.init(dec)
+    LibMinimp3.init(dec)
 
     pcm_buf = Slice(LibMinimp3::Mp3dSampleT).new(LibMinimp3::MINIMP3_MAX_SAMPLES_PER_FRAME)
 
@@ -371,26 +395,67 @@ class Minimp3::Decoder
       elsif samples > 0 && frame_bytes > 0
         # call callback
         #
-        frame = self.to_frame(pcm_buf, frame_info, samples)
+        frame = Frame.from_decode_result(pcm_buf, frame_info, samples)
         callback.call(frame)
       else
         raise Error.new("Unexpeced decode result:  samples: #{samples}, frame_bytes: #{frame_bytes}")
       end
     end
   end
+end
 
-  @[AlwaysInline]
-  private def self.to_frame(pcm_buf, frame_info, samples)
-    exact_samples_bytes = frame_info.channels * samples * ONE_SAMPLE_BYTES
-    Frame.new(
-      data_buf: Bytes.new(pcm_buf.to_unsafe.as(UInt8*), exact_samples_bytes),
-      frame_offset: frame_info.frame_offset.to_u32,
-      frame_bytes: frame_info.frame_bytes.to_u32,
-      layer: frame_info.layer.to_u32,
-      channels: frame_info.channels.to_u32,
-      samples: samples.to_u32,
-      sample_rate: frame_info.hz.to_u32,
-      bit_rate: frame_info.bitrate_kbps.to_u32 * 1000
-    )
+class Minimp3::FrameIterator
+  include Iterator(Frame)
+
+  def initialize(@reader : IO)
+    @dec = Pointer(LibMinimp3::Mp3decT).malloc(1)
+    LibMinimp3.init(@dec)
+
+    @to_decode_buf = Bytes.new(16 * 1024)
+    @to_decode_size = 0
+    @last_loop_decoded_size = 0
+  end
+
+  def next
+    pcm_buf = Slice(LibMinimp3::Mp3dSampleT).new(LibMinimp3::MINIMP3_MAX_SAMPLES_PER_FRAME)
+
+    loop do
+      @to_decode_size -= @last_loop_decoded_size
+
+      # to_decode_buf compact
+      #
+      if @last_loop_decoded_size > 0
+        move_pos = @last_loop_decoded_size
+        move_size = @to_decode_size
+        @to_decode_buf.to_unsafe.move_from(@to_decode_buf.to_unsafe + move_pos, move_size)
+      end
+
+      # fill to_decode_buf from io
+      #
+      to_read_pos = @to_decode_size
+      to_read_size = @to_decode_buf.size - @to_decode_size
+      to_read_buf = Bytes.new(@to_decode_buf.to_unsafe + to_read_pos, to_read_size)
+      @to_decode_size += @reader.read(to_read_buf)
+
+      # end
+      #
+      return stop unless @to_decode_size > 0
+
+      # decode
+      #
+      frame_info = uninitialized LibMinimp3::Mp3decFrameInfoT
+      samples = LibMinimp3.decode_frame(@dec, @to_decode_buf, @to_decode_size, pcm_buf, pointerof(frame_info))
+
+      @last_loop_decoded_size = frame_bytes = frame_info.frame_bytes
+      if samples == 0 && frame_bytes == 0
+        return stop
+      elsif samples == 0 && frame_bytes > 0
+        next
+      elsif samples > 0 && frame_bytes > 0
+        return Frame.from_decode_result(pcm_buf, frame_info, samples)
+      else
+        raise Error.new("Unexpeced decode result:  samples: #{samples}, frame_bytes: #{frame_bytes}")
+      end
+    end
   end
 end
