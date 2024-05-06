@@ -43,6 +43,7 @@ runExample example_file *flags:
 [unix]
 runExample example_file *flags:
   #!/usr/bin/env bash
+  apt install libao-dev
   shards install --skip-postinstall --skip-executables
   export CRYSTAL_LIBRARY_PATH="$(pwd)/clib:$(crystal env CRYSTAL_LIBRARY_PATH)"
   crystal run --progress {{ flags}} {{ example_file }}
