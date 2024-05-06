@@ -2,6 +2,8 @@
 
 [minimp3](https://github.com/lieff/minimp3) binding for crystal lang
 
+[API DOC](https://lost22git.github.io/minimp3.cr)
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
