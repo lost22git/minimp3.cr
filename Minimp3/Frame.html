@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.12.1">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="minimp3">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="minimp3">
+  <title>Minimp3::Frame - minimp3 main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          minimp3
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="minimp3/Minimp3" data-name="minimp3">
+      <a href="../Minimp3.html">Minimp3</a>
+      
+        <ul>
+  
+  <li class=" " data-id="minimp3/Minimp3/Decoder" data-name="minimp3::decoder">
+      <a href="../Minimp3/Decoder.html">Decoder</a>
+      
+    </li>
+  
+  <li class=" " data-id="minimp3/Minimp3/ErrnoError" data-name="minimp3::errnoerror">
+      <a href="../Minimp3/ErrnoError.html">ErrnoError</a>
+      
+    </li>
+  
+  <li class=" " data-id="minimp3/Minimp3/ErrnoKind" data-name="minimp3::errnokind">
+      <a href="../Minimp3/ErrnoKind.html">ErrnoKind</a>
+      
+    </li>
+  
+  <li class=" " data-id="minimp3/Minimp3/Error" data-name="minimp3::error">
+      <a href="../Minimp3/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" current" data-id="minimp3/Minimp3/Frame" data-name="minimp3::frame">
+      <a href="../Minimp3/Frame.html">Frame</a>
+      
+    </li>
+  
+  <li class=" " data-id="minimp3/Minimp3/FrameIterator" data-name="minimp3::frameiterator">
+      <a href="../Minimp3/FrameIterator.html">FrameIterator</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> Minimp3::<wbr>Frame
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Minimp3/Frame.html">Minimp3::Frame</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/lost22git/minimp3.cr/blob/e5c0136d0eb49f56f4f80e082289d4ad2c5ff255/src/minimp3.cr#L278" target="_blank">
+        minimp3.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28data_buf%3ABytes%2Cframe_offset%3AUInt32%2Cframe_bytes%3AUInt32%2Clayer%3AUInt32%2Cchannels%3AUInt32%2Csamples%3AUInt32%2Csample_rate%3AUInt32%2Cbit_rate%3AUInt32%29-class-method" class="signature"><strong>.new</strong>(data_buf : Bytes, frame_offset : UInt32, frame_bytes : UInt32, layer : UInt32, channels : UInt32, samples : UInt32, sample_rate : UInt32, bit_rate : UInt32)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#from_decode_result%28pcm_buf%2Cframe_info%2Csamples%29-class-method" class="signature"><strong>.from_decode_result</strong>(pcm_buf, frame_info, samples)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#bit_rate%3AUInt32-instance-method" class="signature"><strong>#bit_rate</strong> : UInt32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#channels%3AUInt32-instance-method" class="signature"><strong>#channels</strong> : UInt32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#copy_with%28data_buf_data_buf%3D%40data_buf%2Cframe_offset_frame_offset%3D%40frame_offset%2Cframe_bytes_frame_bytes%3D%40frame_bytes%2Clayer_layer%3D%40layer%2Cchannels_channels%3D%40channels%2Csamples_samples%3D%40samples%2Csample_rate_sample_rate%3D%40sample_rate%2Cbit_rate_bit_rate%3D%40bit_rate%29-instance-method" class="signature"><strong>#copy_with</strong>(data_buf _data_buf = @data_buf, frame_offset _frame_offset = @frame_offset, frame_bytes _frame_bytes = @frame_bytes, layer _layer = @layer, channels _channels = @channels, samples _samples = @samples, sample_rate _sample_rate = @sample_rate, bit_rate _bit_rate = @bit_rate)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#data_buf%3ABytes-instance-method" class="signature"><strong>#data_buf</strong> : Bytes</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#exact_samples%3AUInt32-instance-method" class="signature"><strong>#exact_samples</strong> : UInt32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#exact_samples_bytes%3AUInt32-instance-method" class="signature"><strong>#exact_samples_bytes</strong> : UInt32</a>
+        
+          <div class="summary"><p>exact_samples_bytes = channels * samples * ONE_SAMPLE_BYTES</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#frame_bytes%3AUInt32-instance-method" class="signature"><strong>#frame_bytes</strong> : UInt32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#frame_offset%3AUInt32-instance-method" class="signature"><strong>#frame_offset</strong> : UInt32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#layer%3AUInt32-instance-method" class="signature"><strong>#layer</strong> : UInt32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sample_rate%3AUInt32-instance-method" class="signature"><strong>#sample_rate</strong> : UInt32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#samples%3AUInt32-instance-method" class="signature"><strong>#samples</strong> : UInt32</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(data_buf:Bytes,frame_offset:UInt32,frame_bytes:UInt32,layer:UInt32,channels:UInt32,samples:UInt32,sample_rate:UInt32,bit_rate:UInt32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(data_buf : Bytes, frame_offset : UInt32, frame_bytes : UInt32, layer : UInt32, channels : UInt32, samples : UInt32, sample_rate : UInt32, bit_rate : UInt32)
+
+        <a class="method-permalink" href="#new%28data_buf%3ABytes%2Cframe_offset%3AUInt32%2Cframe_bytes%3AUInt32%2Clayer%3AUInt32%2Cchannels%3AUInt32%2Csamples%3AUInt32%2Csample_rate%3AUInt32%2Cbit_rate%3AUInt32%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/minimp3.cr/blob/e5c0136d0eb49f56f4f80e082289d4ad2c5ff255/src/minimp3.cr#L278" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="from_decode_result(pcm_buf,frame_info,samples)-class-method">
+      <div class="signature">
+        
+        def self.<strong>from_decode_result</strong>(pcm_buf, frame_info, samples)
+
+        <a class="method-permalink" href="#from_decode_result%28pcm_buf%2Cframe_info%2Csamples%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/minimp3.cr/blob/e5c0136d0eb49f56f4f80e082289d4ad2c5ff255/src/minimp3.cr#L302" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="bit_rate:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>bit_rate</strong> : UInt32
+
+        <a class="method-permalink" href="#bit_rate%3AUInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="channels:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>channels</strong> : UInt32
+
+        <a class="method-permalink" href="#channels%3AUInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clone-instance-method">
+      <div class="signature">
+        
+        def <strong>clone</strong>
+
+        <a class="method-permalink" href="#clone-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/minimp3.cr/blob/e5c0136d0eb49f56f4f80e082289d4ad2c5ff255/src/minimp3.cr#L278" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="copy_with(data_buf_data_buf=@data_buf,frame_offset_frame_offset=@frame_offset,frame_bytes_frame_bytes=@frame_bytes,layer_layer=@layer,channels_channels=@channels,samples_samples=@samples,sample_rate_sample_rate=@sample_rate,bit_rate_bit_rate=@bit_rate)-instance-method">
+      <div class="signature">
+        
+        def <strong>copy_with</strong>(data_buf _data_buf = @data_buf, frame_offset _frame_offset = @frame_offset, frame_bytes _frame_bytes = @frame_bytes, layer _layer = @layer, channels _channels = @channels, samples _samples = @samples, sample_rate _sample_rate = @sample_rate, bit_rate _bit_rate = @bit_rate)
+
+        <a class="method-permalink" href="#copy_with%28data_buf_data_buf%3D%40data_buf%2Cframe_offset_frame_offset%3D%40frame_offset%2Cframe_bytes_frame_bytes%3D%40frame_bytes%2Clayer_layer%3D%40layer%2Cchannels_channels%3D%40channels%2Csamples_samples%3D%40samples%2Csample_rate_sample_rate%3D%40sample_rate%2Cbit_rate_bit_rate%3D%40bit_rate%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/minimp3.cr/blob/e5c0136d0eb49f56f4f80e082289d4ad2c5ff255/src/minimp3.cr#L278" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="data_buf:Bytes-instance-method">
+      <div class="signature">
+        
+        def <strong>data_buf</strong> : Bytes
+
+        <a class="method-permalink" href="#data_buf%3ABytes-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="exact_samples:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>exact_samples</strong> : UInt32
+
+        <a class="method-permalink" href="#exact_samples%3AUInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/minimp3.cr/blob/e5c0136d0eb49f56f4f80e082289d4ad2c5ff255/src/minimp3.cr#L290" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="exact_samples_bytes:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>exact_samples_bytes</strong> : UInt32
+
+        <a class="method-permalink" href="#exact_samples_bytes%3AUInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>exact_samples_bytes = channels * samples * ONE_SAMPLE_BYTES</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/minimp3.cr/blob/e5c0136d0eb49f56f4f80e082289d4ad2c5ff255/src/minimp3.cr#L297" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="frame_bytes:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>frame_bytes</strong> : UInt32
+
+        <a class="method-permalink" href="#frame_bytes%3AUInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="frame_offset:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>frame_offset</strong> : UInt32
+
+        <a class="method-permalink" href="#frame_offset%3AUInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="layer:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>layer</strong> : UInt32
+
+        <a class="method-permalink" href="#layer%3AUInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sample_rate:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>sample_rate</strong> : UInt32
+
+        <a class="method-permalink" href="#sample_rate%3AUInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="samples:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>samples</strong> : UInt32
+
+        <a class="method-permalink" href="#samples%3AUInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>
