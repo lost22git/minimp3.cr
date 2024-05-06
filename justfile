@@ -44,6 +44,6 @@ runExample example_file *flags:
 runExample example_file *flags:
   #!/usr/bin/env bash
   shards install --skip-postinstall --skip-executables
-  $env.CRYSTAL_LIBRARY_PATH = $'(pwd)\clib;(crystal env CRYSTAL_LIBRARY_PATH)'
+  export CRYSTAL_LIBRARY_PATH="$(pwd)/clib:$(crystal env CRYSTAL_LIBRARY_PATH)"
   crystal run --progress {{ flags}} {{ example_file }}
 
